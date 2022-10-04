@@ -21,9 +21,9 @@ pub type WrenLoadModuleCompleteFn =
 
 #[repr(C)]
 pub struct WrenLoadModuleResult {
-    source: *const c_char,
-    on_complete: WrenLoadModuleCompleteFn,
-    user_data: *mut c_void,
+    pub source: *mut c_char,
+    pub on_complete: WrenLoadModuleCompleteFn,
+    pub user_data: *mut c_void,
 }
 
 pub type WrenLoadModuleFn =
@@ -56,8 +56,8 @@ pub type WrenErrorFn = extern "C" fn(
 
 #[repr(C)]
 pub struct WrenForeignClassMethods {
-    allocate: WrenForeignMethodFn,
-    finalize: WrenFinalizerFn,
+    pub allocate: WrenForeignMethodFn,
+    pub finalize: WrenFinalizerFn,
 }
 
 pub type WrenBindForeignClassFn = extern "C" fn(
@@ -68,17 +68,17 @@ pub type WrenBindForeignClassFn = extern "C" fn(
 
 #[repr(C)]
 pub struct WrenConfiguration {
-    reallocate_fn: WrenReallocateFn,
-    resolve_module_fn: WrenResolveModuleFn,
-    load_module_fn: WrenLoadModuleFn,
-    bind_foreign_method_fn: WrenBindForeignMethodFn,
-    bind_foreign_class_fn: WrenBindForeignClassFn,
-    write_fn: WrenWriteFn,
-    error_fn: WrenErrorFn,
-    initial_heap_size: usize,
-    min_heap_size: usize,
-    heap_growth_percent: c_int,
-    user_data: *mut c_void,
+    pub reallocate_fn: WrenReallocateFn,
+    pub resolve_module_fn: WrenResolveModuleFn,
+    pub load_module_fn: WrenLoadModuleFn,
+    pub bind_foreign_method_fn: WrenBindForeignMethodFn,
+    pub bind_foreign_class_fn: WrenBindForeignClassFn,
+    pub write_fn: WrenWriteFn,
+    pub error_fn: WrenErrorFn,
+    pub initial_heap_size: usize,
+    pub min_heap_size: usize,
+    pub heap_growth_percent: c_int,
+    pub user_data: *mut c_void,
 }
 
 #[repr(C)]
